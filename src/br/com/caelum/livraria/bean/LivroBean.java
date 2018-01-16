@@ -13,6 +13,7 @@ import javax.faces.validator.ValidatorException;
 import br.com.caelum.livraria.dao.DAO;
 import br.com.caelum.livraria.modelo.Autor;
 import br.com.caelum.livraria.modelo.Livro;
+import br.com.caelum.livraria.util.RedirectView;
 
 @ManagedBean
 @ViewScoped
@@ -35,6 +36,12 @@ public class LivroBean {
 
 	public Livro getLivro() {
 		return livro;
+	}
+	
+	public RedirectView formAutor() {
+		System.out.println("Chamando a pagina autor");
+		
+		return new RedirectView("autor");
 	}
 	
 	public void gravarAutor() {
