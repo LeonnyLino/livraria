@@ -67,14 +67,34 @@ public class LivroBean {
 		
 	}
 	
+	public void remover(Livro livro) {
+		System.out.println("Removendo Livro: " + livro.getTitulo());
+		new DAO<Livro>(Livro.class).remove(livro);
+	}
+	
+	public void alterar(Livro livro) {
+		System.out.println("Alterando Livro: " + livro.getTitulo());
+		this.livro = livro;
+	}
+	
+	public void removeAutorDoLivro(Autor autor) {
+		System.out.println("Removendo Autor do Livro: " + autor.getNome());
+		this.livro.removerAutor(autor);
+	}
+	
 	public void gravar() {
 		System.out.println("Gravando livro: " + this.livro.getTitulo());
 
 		if (livro.getAutores().isEmpty()) {
 			FacesContext.getCurrentInstance().addMessage("autor", new FacesMessage("Livro deve ter pelo menos um Autor"));
 		}
+		
+		if(livro.getId().equals(null)) {
+			new DAO<Livro>(Livro.class).adiciona(this.livro);
+		}else {
+			new DAO<Livro>(Livro.class).atualiza(this.livro);
+		}
 
-		new DAO<Livro>(Livro.class).adiciona(this.livro);
 		
 		this.livro = new Livro();
 	}
