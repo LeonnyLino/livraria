@@ -16,7 +16,7 @@
 
 				<h:outputLabel value="Titulo:" for="titulo" />
 				<h:inputText id="titulo" value="#{livroBean.livro.titulo}" required="true" 
-							requiredMessage="Titulo obrigatório!" validatorMessage="Título nã pode ser superior a 40 caracteres">
+							requiredMessage="Titulo obrigatório!" validatorMessage="Título não pode ser superior a 40 caracteres">
 					<f:validateLength maximum="40"/>
 					<f:ajax event="blur" render="mensagens"/>
 				</h:inputText>

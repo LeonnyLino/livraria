@@ -9,6 +9,7 @@
 	<ui:define name="titulo">Novo Autor</ui:define>
 	<ui:define name="conteudo">
 		<h:form>
+			<h:messages id="mensagens1"/>
 			<fieldset>
 				<legend>Dados do Autor</legend>
 				<h:panelGrid columns="2">
@@ -28,8 +29,22 @@
 						<f:facet name="header">Remover</f:facet>
 						<h:commandLink value="Remover" action="#{autorBean.remover(autor)}"/>
 					</h:column>
+					<h:column>
+						<f:facet name="header">Alterar</f:facet>
+						<h:commandLink value="Alterar" action="#{autorBean.alterar(autor)}"/>
+					</h:column>
 				</h:dataTable>
 			</fieldset>
+			<fieldset>
+				<legend>Livros do Autor:</legend>
+				<h:dataTable id="tabelaLivros" value="#{autorBean.livrosDoAutor}" var="livro">
+					<h:column>
+						<f:facet name="header">Livro</f:facet>
+						<h:outputText value="#{livro.titulo}" />
+					</h:column>			
+				</h:dataTable>
+			</fieldset>
+			
 		</h:form>
 		
 	</ui:define>
